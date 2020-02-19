@@ -107,6 +107,9 @@ void read_data(int *counts_tmp, int connfd){
     // and send that buffer to client
     sprintf(buffer, "%d", C);
     tmp = write(connfd, buffer, sizeof(int));
+    if (tmp){
+        tmp = 1;
+    }
     free(buffer);
 }
 
