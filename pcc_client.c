@@ -82,5 +82,8 @@ void send_data(int sockfd, char * filePath){
     fclose(fp);
     //    reading input from server
     tmp = read(sockfd, C, sizeof(int));
+    if (tmp){
+        tmp = 1;
+    }
     printf("# of printable characters: %u\n", atoi(C));
 }
