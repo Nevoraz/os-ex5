@@ -9,6 +9,7 @@
 #include <sys/types.h>
 #include <time.h>
 #include <assert.h>
+#include <signal.h>
 
 int counts[127];
 int counts_tmp[127];
