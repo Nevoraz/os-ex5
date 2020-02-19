@@ -97,14 +97,15 @@ void read_data(int *counts_tmp, int connfd){
     int C;
     char N[sizeof(int)];
     char *buffer;
+    int tmp;
     // read the message from client and copy it in buffer
-    read(connfd, N, sizeof(int));
+    tmp = read(connfd, N, sizeof(int));
     buffer = malloc(atoi(N) * sizeof(char));
-    read(connfd, buffer, atoi(N));
+    tmp = read(connfd, buffer, atoi(N));
     C = count_data(counts, buffer, atoi(N));
     // and send that buffer to client
     sprintf(buffer, "%d", C);
-    write(connfd, buffer, sizeof(int));
+    tmp = write(connfd, buffer, sizeof(int));
     free(buffer);
 }
 
