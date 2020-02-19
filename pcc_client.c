@@ -59,6 +59,7 @@ int main(int argc, char *argv[])
 
 void send_data(int sockfd, char * filePath){
     int N = 0;
+    int tmp;
     char C[sizeof(int)];
     char *buffer;
     FILE *fp;
@@ -73,13 +74,13 @@ void send_data(int sockfd, char * filePath){
     buffer = malloc(N * sizeof(char));
     sprintf(buffer, "%d", N);
     // sending N, the size of the file
-    write(sockfd, buffer, sizeof(int));
-    fread(buffer, N, 1, fp);
+    tmp = write(sockfd, buffer, sizeof(int));
+    tmp = fread(buffer, N, 1, fp);
     // sending the data
-    write(sockfd, buffer, N);
+    tmp = write(sockfd, buffer, N);
     free(buffer);
     fclose(fp);
     //    reading input from server
-    read(sockfd, C, sizeof(int));
+    tmp = read(sockfd, C, sizeof(int));
     printf("# of printable characters: %u\n", atoi(C));
 }
